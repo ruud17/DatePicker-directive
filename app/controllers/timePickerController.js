@@ -24,17 +24,17 @@ angular.module('app')
         };
 
         $scope.changed = function () {
-            console.log('Time changed to: ' + $scope.mytime);
+           // console.log('Time changed to: ' + $scope.mytime);
         };
 
         $scope.clear = function() {
             $scope.mytime = null;
         };
-        $scope.max=new Date();
+/*        $scope.max=new Date();
         $scope.max.setHours(11);
 
         $scope.min=new Date();
-        $scope.min.setHours(3);
+        $scope.min.setHours(3);*/
 
     }
     ]);

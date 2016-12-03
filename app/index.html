@@ -15,7 +15,10 @@
 
     <script src="app.js"></script>
 
+<!--
     <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+-->
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls-2.3.0.js"></script>
 
     <script src="controllers/mainController.js"></script>
     <script src="controllers/dateTimePickerController.js"></script>
@@ -25,16 +28,18 @@
     <script src="directives/dateTimePickerDirective.js"></script>
     <script src="directives/datePickerDirective.js"></script>
     <script src="directives/timePickerDirective.js"></script>
+
+    <script src="services/workingHoursService.js"></script>
 </head>
 <body>
 <div data-ng-controller="mainController">
     <p style="margin-left: 15px">Selected date and time:
         <span class="currentDateTime"> {{order.requestedDatetime | date:'yyyy-MM-dd HH:mm:ss Z'}} </span>
     </p>
-                 <date-time-picker ng-model="order.requestedDatetime" sb-time-zone="order.timeZone" required="true">
-                     <date-picker sb-before-render-item="beforeRenderDateItem"></date-picker>
-                         <time-picker sb-before-render-item="beforeRenderTimeItem"></time-picker>
-                 </date-time-picker>
+    <date-time-picker ng-model="order.requestedDatetime" sb-time-zone="order.timeZone" required="true">
+        <date-picker sb-before-render-item="beforeRenderDateItem"></date-picker>
+        <time-picker sb-before-render-item="beforeRenderTimeItem"></time-picker>
+    </date-time-picker>
 </div>
 </body>
 </html>
