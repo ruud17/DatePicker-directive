@@ -5,7 +5,7 @@
             return {
                 restrict: 'E',
                 scope: {
-                    dateValue: "=datePicker"
+                    selectedDate: "=datePicker"
                 },
                 templateUrl: 'views/datePickerDirective.html',
                 controller: 'datePickerController'

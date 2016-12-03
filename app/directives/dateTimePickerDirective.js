@@ -7,7 +7,8 @@
                 transclude : true,
                 controller:'dateTimePickerController',
                 scope: {
-                    ngModel:"="
+                    ngModel:"=",
+                    sbTimeZone:'@'
                 },
                 templateUrl: 'views/dateTimePickerDirective.html'
             };
