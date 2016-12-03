@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>DateTime Directive</title>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-sanitize/angular-sanitize.min.js"></script>
+
+    <script src="app.js"></script>
+
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+
+    <script src="controllers/mainController.js"></script>
+    <script src="controllers/dateTimePickerController.js"></script>
+    <script src="controllers/datePickerController.js"></script>
+    <script src="controllers/timePickerController.js"></script>
+
+    <script src="directives/dateTimePickerDirective.js"></script>
+    <script src="directives/datePickerDirective.js"></script>
+    <script src="directives/timePickerDirective.js"></script>
+</head>
+<body>
+<div data-ng-controller="mainController">
+                 <date-time-picker ng-model="order.requestedDatetime" sb-time-zone="order.timeZone" required="true">
+                     <date-picker sb-before-render-item="beforeRenderDateItem"></date-picker>
+                         <time-picker sb-before-render-item="beforeRenderTimeItem"></time-picker>
+                 </date-time-picker>
+</div>
+</body>
+</html>

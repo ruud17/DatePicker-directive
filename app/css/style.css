@@ -1,0 +1,23 @@
+body{
+    margin: 20px;
+}
+
+.datePickerIcon{
+    margin-top: 24px;
+    margin-left: -30px;
+}
+
+.timePickerPos{
+    margin-top: -10px;
+    margin-left: -30px;
+}
+
+.currentDateTime{
+    font-family: monospace;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.dateLabel{
+
+}
