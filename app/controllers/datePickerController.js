@@ -2,10 +2,12 @@ angular.module('app')
     .controller('datePickerController', ['$scope', function ($scope) {
         'use strict';
 
-        var outerFunctionValue = $scope.sbBeforeRenderItem();
-console.log('iff',outerFunctionValue);
+      $scope.$on('updateDirectiveStatus',function () {
+          var outerFunctionValue = $scope.sbBeforeRenderItem();
+          $scope.shouldDisableDatePicker=outerFunctionValue.disabled.datePicker;
+      })
+
         angular.extend($scope, {
-            shouldDisableDatePicker:outerFunctionValue.disabled.datePicker
         })
 
         $scope.openDatepicker = function () {

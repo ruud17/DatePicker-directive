@@ -1,8 +1,10 @@
 angular.module('app')
-    .controller('mainController', ['$scope', function ($scope) {
+    .controller('mainController', ['$scope','$rootScope', function ($scope,$rootScope) {
         'use strict';
 
         angular.extend($scope, {
+            shouldDisableDatepicker:false,
+            shouldDisableTimepicker:false,
             order: {
                 requestedDatetime: new Date(),
                 timeZone: 'America/Los_Angeles'
@@ -17,9 +19,19 @@ angular.module('app')
             }
         });
 
-        $scope.beforeRenderDateItem=function (data) {
+        $scope.beforeRenderDateItem = function (data) {
+            data = {
+                dateValue: new Date(),
+                disabled: {
+                    datePicker: $scope.shouldDisableDatepicker,
+                    timePicker: $scope.shouldDisableTimepicker
+                }
+            }
             return data;
         }
 
+        $scope.$watch('[shouldDisableDatepicker,shouldDisableTimepicker]',function (newVal) {
+            $rootScope.$broadcast('updateDirectiveStatus');
+        })
     }
     ]);

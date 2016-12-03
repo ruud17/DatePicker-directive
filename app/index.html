@@ -36,6 +36,12 @@
     <p style="margin-left: 15px">Selected date and time:
         <span class="currentDateTime"> {{order.requestedDatetime | date:'yyyy-MM-dd HH:mm:ss Z'}} </span>
     </p>
+    <div class="checkbox">
+        <label><input type="checkbox" value="" data-ng-model="shouldDisableDatepicker">Disable datepicker</label>
+    </div>
+    <div class="checkbox">
+        <label><input type="checkbox" value="" data-ng-model="shouldDisableTimepicker">Disable timepicker</label>
+    </div>
     <date-time-picker ng-model="order.requestedDatetime" sb-time-zone="order.timeZone" required="true">
         <div date-picker="order.requestedDatetime" sb-before-render-item="beforeRenderDateItem(config)"></div>
         <div time-picker="order.requestedDatetime" sb-before-render-item="beforeRenderDateItem(config)"></div>

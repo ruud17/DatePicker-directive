@@ -2,13 +2,15 @@ angular.module('app')
     .controller('timePickerController', ['$scope', function ($scope) {
         'use strict';
 
-        var outerFunctionValue = $scope.sbBeforeRenderItem();
-console.log('mems,',outerFunctionValue);
+        $scope.$on('updateDirectiveStatus',function () {
+            var outerFunctionValue = $scope.sbBeforeRenderItem();
+            $scope.shouldDisableTimePicker=outerFunctionValue.disabled.timePicker
+        })
+
         angular.extend($scope, {
             hstep :1,
             mstep : 15,
-            ismeridian:true,
-            shouldDisableTimePicker:outerFunctionValue.disabled.timePicker
+            ismeridian:true
         })
 
         $scope.changed = function () {
