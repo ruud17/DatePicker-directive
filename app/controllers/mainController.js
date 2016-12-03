@@ -3,11 +3,23 @@ angular.module('app')
         'use strict';
 
         angular.extend($scope, {
-            order : {
+            order: {
                 requestedDatetime: new Date(),
                 timeZone: 'America/Los_Angeles'
+            },
+            config: {
+                dateValue: new Date(),
+                disabled: {
+                    datePicker: false,
+                    timePicker: false
+                }
+
             }
         });
+
+        $scope.beforeRenderDateItem=function (data) {
+            return data;
+        }
 
     }
     ]);

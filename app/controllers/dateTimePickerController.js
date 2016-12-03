@@ -2,29 +2,27 @@ angular.module('app')
     .controller('dateTimePickerController', ['$scope', 'workingHoursService', function ($scope, workingHoursService) {
         'use strict';
         angular.extend($scope, {
-            selected: {
+/*            selected: {
                 date: new Date(2001, 9, 15),
                 time: new Date(1994, 6, 24, 7, 19, 26)
-            },
+            },*/
         });
 
-        var weekendDays = [0, 6];
+/*        var weekendDays = [0, 6];
         var workingHours = workingHoursService.getWorkingHours();
-        console.log('workingdays',workingHours);
-
 
         $scope.$watch('selected', function (newVal, oldVal) {
-            debugger;
+            console.log('changed');
             if (checkDateAndTime(newVal)) {
                 var day = newVal.date.getDay();
                 $scope.ngModel = new Date(newVal.date.getFullYear(), newVal.date.getMonth(), newVal.date.getDate(), newVal.time.getHours(), newVal.time.getMinutes())
             } else {
                 $scope.ngModel = null;
             }
-           /* if(unsetTimePickerValue(newVal.date, newVal.time)){
+           /!* if(unsetTimePickerValue(newVal.date, newVal.time)){
                 $scope.ngModel = null;
                 $scope.selected.time=null;
-            }*/
+            }*!/
         }, true);
 
         function checkDateAndTime(dateTime) {
@@ -53,6 +51,6 @@ angular.module('app')
                 }
             }
             return false;
-        }
+        }*/
     }
     ]);

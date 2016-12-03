@@ -3,8 +3,11 @@
 
     app.directive('timePicker',function () {
             return {
-                restrict: 'E',
-                scope: false,
+                restrict: 'AE',
+                scope: {
+                    selectedTime:'=timePicker',
+                    sbBeforeRenderItem:'&'
+                },
                 templateUrl: 'views/timePickerDirective.html',
                 controller:'timePickerController'
             };

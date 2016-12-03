@@ -3,8 +3,11 @@
 
     app.directive('datePicker', function () {
             return {
-                restrict: 'E',
-                scope: false,
+                restrict: 'AE',
+                scope: {
+                    selectedDate:"=datePicker",
+                    sbBeforeRenderItem:'&'
+                },
                 templateUrl: 'views/datePickerDirective.html',
                 controller: 'datePickerController'
             };

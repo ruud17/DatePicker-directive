@@ -37,8 +37,8 @@
         <span class="currentDateTime"> {{order.requestedDatetime | date:'yyyy-MM-dd HH:mm:ss Z'}} </span>
     </p>
     <date-time-picker ng-model="order.requestedDatetime" sb-time-zone="order.timeZone" required="true">
-        <date-picker sb-before-render-item="beforeRenderDateItem"></date-picker>
-        <time-picker sb-before-render-item="beforeRenderTimeItem"></time-picker>
+        <div date-picker="order.requestedDatetime" sb-before-render-item="beforeRenderDateItem(config)"></div>
+        <div time-picker="order.requestedDatetime" sb-before-render-item="beforeRenderDateItem(config)"></div>
     </date-time-picker>
 </div>
 </body>
