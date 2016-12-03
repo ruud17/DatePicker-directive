@@ -4,14 +4,9 @@
     app.directive('timePicker',function () {
             return {
                 restrict: 'E',
-                scope: {
-                    timeValue:"=timePicker"
-                },
+                scope: false,
                 templateUrl: 'views/timePickerDirective.html',
                 controller:'timePickerController'
-           /*     link: function(scope, element, attrs, dateTimePickerController) {
-                    dateTimePickerController.test();
-                }*/
             };
         }
     );

@@ -4,15 +4,9 @@
     app.directive('datePicker', function () {
             return {
                 restrict: 'E',
-                scope: {
-                    selectedDate: "=datePicker"
-                },
+                scope: false,
                 templateUrl: 'views/datePickerDirective.html',
                 controller: 'datePickerController'
-                /*                link: function(scope, element, attrs, dateTimePickerController) {
-                 console.log('rez',dateTimePickerController);
-                 // dateTimePickerController.test();
-                 }*/
             };
         }
     );

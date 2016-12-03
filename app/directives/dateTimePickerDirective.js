@@ -10,7 +10,7 @@
                     ngModel:"=",
                     sbTimeZone:'@'
                 },
-                templateUrl: 'views/dateTimePickerDirective.html'
+                templateUrl: 'views/dateTimePickerDirective.html',
             };
         }
     );
