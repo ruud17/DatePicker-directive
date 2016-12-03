@@ -6,13 +6,17 @@ angular.module('app')
             function getWorkingHours() {
                 var workingTime = {
                     weekdays: {
-                        start: date.setHours(7, 0, 0, 0),
-                        end: date.setHours(20, 0, 0, 0)
+                        startHours: 7,
+                        startMinutes:0,
+                        endHours: 20,
+                        endMinutes:0
 
                     },
                     weekends: {
-                        start: date.setHours(10, 0, 0, 0),
-                        end: date.setHours(16, 0, 0, 0)
+                        startHours: 10,
+                        startMinutes:0,
+                        endHours: 16,
+                        endMinutes:0
 
                     }
                 }
