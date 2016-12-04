@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52a12ff8-d217-4238-be0a-3a657a2f3255" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/dateTimePickerController.js" afterPath="$PROJECT_DIR$/app/controllers/dateTimePickerController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/mainController.js" afterPath="$PROJECT_DIR$/app/controllers/mainController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/directives/dateTimePickerDirective.js" afterPath="$PROJECT_DIR$/app/directives/dateTimePickerDirective.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/datePickerDirective.html" afterPath="$PROJECT_DIR$/app/views/datePickerDirective.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/dateTimePickerDirective.html" afterPath="$PROJECT_DIR$/app/views/dateTimePickerDirective.html" />
     </list>
     <ignored path="DateTimeDirective.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,8 +70,8 @@
       <file leaf-file-name="mainController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/mainController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+            <state relative-caret-position="81">
+              <caret line="38" column="77" selection-start-line="38" selection-start-column="77" selection-end-line="38" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -371,12 +365,12 @@
       <workItem from="1480731214012" duration="11611000" />
       <workItem from="1480765845872" duration="20749000" />
       <workItem from="1480800955505" duration="1362000" />
-      <workItem from="1480803719096" duration="29982000" />
+      <workItem from="1480803719096" duration="30270000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="65488000" />
+    <option name="totallyTimeSpent" value="65776000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -832,8 +826,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/mainController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+        <state relative-caret-position="81">
+          <caret line="38" column="77" selection-start-line="38" selection-start-column="77" selection-end-line="38" selection-end-column="77" />
           <folding />
         </state>
       </provider>

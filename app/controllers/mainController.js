@@ -36,39 +36,31 @@ angular.module('app')
         })
 
         $scope.$watch('order.timeZone',function(newVal){
+            $scope.datetime=setDateTimeAndZone($scope.order.requestedDatetime,newVal)
 
-           var now = moment($scope.order.requestedDatetime);
-           var zonedNow = now.clone().tz(newVal);
-            var atEight = zonedNow.clone()
-                .year($scope.order.requestedDatetime.getFullYear())
-                .month($scope.order.requestedDatetime.getMonth())
-                .date($scope.order.requestedDatetime.getDate())
-                .hour($scope.order.requestedDatetime.getHours()).
-                minute($scope.order.requestedDatetime.getMinutes()).
-                seconds(0).
-                milliseconds(0);
-
-             $scope.datetime=atEight.format('DD/MM/YYYY hh:mm a z')
         })
 
         $scope.$watch('order.requestedDatetime',function (newVal) {
             if(newVal!=null && typeof newVal !='undefined'){
-            var now = moment(newVal);
-            var zonedNow = now.clone().tz($scope.order.timeZone);
-            var atEight = zonedNow.clone()
-                .year(newVal.getFullYear())
-                .month(newVal.getMonth())
-                .date(newVal.getDate())
-                .hour(newVal.getHours())
-                .minute(newVal.getMinutes()).
-                seconds(0).
-                milliseconds(0);
-
-            $scope.datetime=atEight.format('DD/MM/YYYY hh:mm a z')
+            $scope.datetime=setDateTimeAndZone(newVal,$scope.order.timeZone)
             }else{
                 $scope.datetime=null;
             }
         })
+
+        function setDateTimeAndZone(date,zone){
+            var now = moment(date);
+            var zonedNow = now.clone().tz(zone);
+            var newDate = zonedNow.clone()
+                .year(date.getFullYear())
+                .month(date.getMonth())
+                .date(date.getDate())
+                .hour(date.getHours())
+                .minute(date.getMinutes()).
+                seconds(0).
+                milliseconds(0);
+            return newDate.format('DD/MM/YYYY hh:mm a z');
+        }
 
 
     }
