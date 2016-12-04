@@ -1,5 +1,7 @@
 body{
     margin: 20px;
+    padding-left: 30px;
+    font-family: "SansSerif";
 }
 
 .datePickerIcon{
@@ -16,8 +18,9 @@ body{
     font-family: monospace;
     font-weight: bold;
     padding-left: 20px;
+    font-size: 20px;
 }
 
-.dateLabel{
-
+.disableButton{
+ margin-top: 0;
 }
