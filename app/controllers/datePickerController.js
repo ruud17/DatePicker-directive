@@ -8,6 +8,7 @@ angular.module('app')
       })
 
         angular.extend($scope, {
+            selectedDateX:new Date($scope.selectedDate)
         })
 
         $scope.openDatepicker = function () {
@@ -22,6 +23,14 @@ angular.module('app')
         $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
         $scope.format = $scope.formats[0];
         $scope.altInputFormats = ['M!/d!/yyyy'];
+
+        $scope.$watch('selectedDateX',function (newVal) {
+            if(newVal!=null && typeof newVal !='undefined'){
+            $scope.selectedDate.setFullYear(newVal.getFullYear());
+            $scope.selectedDate.setMonth(newVal.getMonth())
+            $scope.selectedDate.setDate(newVal.getDate())
+            }
+        })
     }
     ]);
 

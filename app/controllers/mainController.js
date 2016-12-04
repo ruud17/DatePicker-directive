@@ -46,7 +46,7 @@ angular.module('app')
             }else{
                 $scope.datetime=null;
             }
-        })
+        },true);
 
         function setDateTimeAndZone(date,zone){
             var now = moment(date);

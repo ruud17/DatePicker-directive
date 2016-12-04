@@ -8,44 +8,58 @@ angular.module('app')
             },*/
         });
 
-/*        var weekendDays = [0, 6];
+        var weekendDays = [0, 6];
         var workingHours = workingHoursService.getWorkingHours();
 
-        $scope.$watch('selected', function (newVal, oldVal) {
-            console.log('changed');
+      $scope.$watch('ngModel', function (newVal, oldVal) {
+          console.info('XXXXXX',newVal,oldVal);
             if (checkDateAndTime(newVal)) {
-                var day = newVal.date.getDay();
-                $scope.ngModel = new Date(newVal.date.getFullYear(), newVal.date.getMonth(), newVal.date.getDate(), newVal.time.getHours(), newVal.time.getMinutes())
+                /*var isDateChanged = checkIfDateIsChanged(newVal, oldVal);
+                console.info('changed', isDateChanged);
+                if (isDateChanged) {
+                    if (unsetTimePickerValue(newVal)) {
+                        console.log('usaoaaoXX');
+                        $scope.ngModel.setHours(0);
+                        $scope.ngModel.setMinutes(20);
+                        //$scope.selected.time = null;
+                    }
+                }*/
             } else {
-                $scope.ngModel = null;
+              //  $scope.ngModel = null;
             }
-           /!* if(unsetTimePickerValue(newVal.date, newVal.time)){
-                $scope.ngModel = null;
-                $scope.selected.time=null;
-            }*!/
         }, true);
 
         function checkDateAndTime(dateTime) {
-            if (typeof dateTime.date != 'undefined' && dateTime.date != null && typeof dateTime.time != 'undefined' && dateTime.time != null) {
+            if (typeof dateTime != 'undefined' && dateTime != null) {
                 return true;
             } else {
                 return false;
             }
         }
-
+        /*
+/!*
         $scope.setTimepickerStatus = function () {
             return (typeof $scope.selected.date == 'undefined' || $scope.selected.date == null) ? true : false;
         }
+*!/
+        function checkIfDateIsChanged(newDate,oldDate) {
+            console.log('diff:',newDate.getFullYear(),oldDate.getFullYear());
+            if(newDate.getFullYear()!=oldDate.getFullYear() || newDate.getMonth()!=oldDate.getMonth() || newDate.getDate()!=oldDate.getDate()){
+                return true;
+            }else {
+                return false;
+            }
+        }
 
-        function unsetTimePickerValue(date, time) {
-            if (typeof date != 'undefined' && date != null && time!=null) {
+        function unsetTimePickerValue(date) {
+            if (typeof date != 'undefined' && date != null) {
                 var day = date.getDay();
                 if (day == weekendDays[0] || day == weekendDays[1]) {
-                    if (time.getHours() < workingHours.weekends.startHours || (time.getHours() >= workingHours.weekends.endHours && time.getMinutes() > workingHours.weekends.endMinutes)){
+                    if (date.getHours() < workingHours.weekends.startHours || (date.getHours() >= workingHours.weekends.endHours && date.getMinutes() > workingHours.weekends.endMinutes)){
                         return true;
                     }
                 } else {
-                    if (time.getHours() < workingHours.weekdays.startHours || (time.getHours() >= workingHours.weekdays.endHours && time.getMinutes() > workingHours.weekdays.endMinutes)){
+                    if (date.getHours() < workingHours.weekdays.startHours || (date.getHours() >= workingHours.weekdays.endHours && date.getMinutes() > workingHours.weekdays.endMinutes)){
                         return true;
                     }
                 }

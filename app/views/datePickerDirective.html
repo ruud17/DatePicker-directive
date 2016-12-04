@@ -3,7 +3,7 @@
         <div class="col-lg-10" style="margin-top: 24px;">
             <input type="text" name="date1" class="form-control"
                    uib-datepicker-popup="{{format}}"
-                   ng-model="selectedDate"
+                   ng-model="selectedDateX"
                    is-open="datepicker.opened"
                    ng-required="true"
                    close-text="Close"
@@ -16,6 +16,5 @@
                     <button type="button" class="btn btn-default btn-raised datePickerIcon" ng-click="openDatepicker()" ng-disabled="shouldDisableDatePicker"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
         </div>
-        date-{{selectedDate}}
     </div>
 </div>
