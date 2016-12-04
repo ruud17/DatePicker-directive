@@ -8,13 +8,12 @@ angular.module('app')
             },*/
         });
 
-        var weekendDays = [0, 6];
-        var workingHours = workingHoursService.getWorkingHours();
+/*        var weekendDays = [0, 6];
+        var workingHours = workingHoursService.getWorkingHours();*/
 
-      $scope.$watch('ngModel', function (newVal, oldVal) {
-          console.info('XXXXXX',newVal,oldVal);
+    /*  $scope.$watch('ngModel', function (newVal, oldVal) {
             if (checkDateAndTime(newVal)) {
-                /*var isDateChanged = checkIfDateIsChanged(newVal, oldVal);
+                /!*var isDateChanged = checkIfDateIsChanged(newVal, oldVal);
                 console.info('changed', isDateChanged);
                 if (isDateChanged) {
                     if (unsetTimePickerValue(newVal)) {
@@ -23,7 +22,7 @@ angular.module('app')
                         $scope.ngModel.setMinutes(20);
                         //$scope.selected.time = null;
                     }
-                }*/
+                }*!/
             } else {
               //  $scope.ngModel = null;
             }
@@ -36,13 +35,13 @@ angular.module('app')
                 return false;
             }
         }
-        /*
-/!*
-        $scope.setTimepickerStatus = function () {
+        /!*
+/!**/
+    /*    $scope.setTimepickerStatus = function () {
             return (typeof $scope.selected.date == 'undefined' || $scope.selected.date == null) ? true : false;
         }
-*!/
-        function checkIfDateIsChanged(newDate,oldDate) {
+*!/*/
+      /*  function checkIfDateIsChanged(newDate,oldDate) {
             console.log('diff:',newDate.getFullYear(),oldDate.getFullYear());
             if(newDate.getFullYear()!=oldDate.getFullYear() || newDate.getMonth()!=oldDate.getMonth() || newDate.getDate()!=oldDate.getDate()){
                 return true;
@@ -65,7 +64,7 @@ angular.module('app')
                 }
             }
             return false;
-        }*/
+        }*!/*/
 
        /* function toTimeZone(time, zone) {
            var formatValue = 'DD/MM/YYYY HH:mm z';

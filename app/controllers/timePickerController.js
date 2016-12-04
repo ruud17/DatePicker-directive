@@ -69,9 +69,13 @@ angular.module('app')
 
 
         function checkIfDateIsChanged(newDate, oldDate) {
-            if (newDate.getFullYear() != oldDate.getFullYear() || newDate.getMonth() != oldDate.getMonth() || newDate.getDate() != oldDate.getDate()) {
-                return true;
-            } else {
+            if (newDate != null && typeof newDate != 'undefined' && oldDate != null && typeof oldDate != 'undefined') {
+                if (newDate.getFullYear() != oldDate.getFullYear() || newDate.getMonth() != oldDate.getMonth() || newDate.getDate() != oldDate.getDate()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }else {
                 return false;
             }
         }

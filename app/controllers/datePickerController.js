@@ -7,6 +7,8 @@ angular.module('app')
           $scope.shouldDisableDatePicker=outerFunctionValue.disabled.datePicker;
       })
 
+        var lastSelectedDate=new Date($scope.selectedDate);
+
         angular.extend($scope, {
             selectedDateX:new Date($scope.selectedDate)
         })
@@ -26,11 +28,20 @@ angular.module('app')
 
         $scope.$watch('selectedDateX',function (newVal) {
             if(newVal!=null && typeof newVal !='undefined'){
+                $scope.selectedDate=new Date(lastSelectedDate);
             $scope.selectedDate.setFullYear(newVal.getFullYear());
             $scope.selectedDate.setMonth(newVal.getMonth())
             $scope.selectedDate.setDate(newVal.getDate())
+            }else{
+                $scope.selectedDate=null;
             }
         })
+
+        $scope.$watch('selectedDate', function (newVal, oldVal) {
+            if(newVal!=null && typeof newVal !='undefined'){
+                lastSelectedDate = new Date(newVal);
+            }
+        },true);
     }
     ]);
 
