@@ -3,11 +3,11 @@
         <div class="col-lg-10" style="margin-top: 24px;">
             <input type="text" name="date1" class="form-control"
                    uib-datepicker-popup="{{format}}"
-                   ng-model="selectedDateX"
+                   ng-model="selectedDateModel"
                    is-open="datepicker.opened"
                    ng-required="true"
-                   close-text="Close"
                    alt-input-formats="altInputFormats"
+                   show-button-bar="false"
                    ng-disabled="shouldDisableDatePicker"
             />
         </div>
