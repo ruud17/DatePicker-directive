@@ -15,38 +15,26 @@ angular.module('app')
             hstep: 1,
             mstep: 15,
             ismeridian: true,
-            selectedTimeX: new Date($scope.selectedTime)
+            selectedTimeX: new Date($scope.selectedTime),
+            indicator:true
         })
-
-        $scope.changed = function () {
-            // console.log('Time changed to: ' + $scope.mytime);
-        };
-
-        /*        $scope.max=new Date();
-         $scope.max.setHours(11);
-
-         $scope.min=new Date();
-         $scope.min.setHours(3);*/
-
-
-        /*
-         $scope.timePickerStatus=function () {
-         return ($scope.selectedTimeX==null || typeof $scope.selectedTimeX =='undefined') ? true : false
-         }
-         */
-
+        
         $scope.$watch('selectedTimeX', function (newVal, oldVal) {
+            console.log('new,old',newVal,oldVal);
             if (newVal != null && typeof newVal != 'undefined') {
                 $scope.selectedTime = new Date(lastSelectedDate);
                 $scope.selectedTime.setHours(newVal.getHours());
                 $scope.selectedTime.setMinutes(newVal.getMinutes())
             } else {
                 $scope.selectedTime = null;
+                $scope.disableTimepicker=false;
+                $scope.indicator=false;
             }
         }, true)
 
         $scope.$watch('selectedTime', function (newVal, oldVal) {
             if (checkDateAndTime(newVal)) {
+                $scope.indicator=true;
                 lastSelectedDate = new Date(newVal);
                 var isDateChanged = checkIfDateIsChanged(newVal, oldVal);
                 if (isDateChanged) {
@@ -54,8 +42,10 @@ angular.module('app')
                         $scope.selectedTimeX = null;
                     }
                 }
+                $scope.disableTimepicker=false;
             } else {
                 $scope.selectedTime = null;
+                $scope.disableTimepicker=true;
             }
         }, true);
 

@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52a12ff8-d217-4238-be0a-3a657a2f3255" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/css/style.css" afterPath="$PROJECT_DIR$/app/css/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/timePickerController.js" afterPath="$PROJECT_DIR$/app/controllers/timePickerController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/timePickerDirective.html" afterPath="$PROJECT_DIR$/app/views/timePickerDirective.html" />
     </list>
     <ignored path="DateTimeDirective.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,27 +40,26 @@
       <file leaf-file-name="timePickerDirective.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/timePickerDirective.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="17">
+              <caret line="1" column="200" selection-start-line="1" selection-start-column="200" selection-end-line="1" selection-end-column="200" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="timePickerController.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="timePickerController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controllers/timePickerController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="59" column="17" selection-start-line="47" selection-start-column="7" selection-end-line="59" selection-end-column="17" />
+            <state relative-caret-position="119">
+              <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
               <folding>
-                <element signature="e#2163#2338#0" expanded="false" />
-                <element signature="e#2904#3667#0" expanded="false" />
+                <element signature="e#2764#3527#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
@@ -85,7 +85,7 @@
       <file leaf-file-name="datePickerController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/datePickerController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
+            <state relative-caret-position="408">
               <caret line="30" column="63" selection-start-line="30" selection-start-column="63" selection-end-line="30" selection-end-column="63" />
               <folding />
             </state>
@@ -136,12 +136,12 @@
         <option value="$PROJECT_DIR$/app/views/datePickerDirective.html" />
         <option value="$PROJECT_DIR$/app/controllers/mainController.js" />
         <option value="$PROJECT_DIR$/app/views/dateTimePickerDirective.html" />
-        <option value="$PROJECT_DIR$/app/views/timePickerDirective.html" />
         <option value="$PROJECT_DIR$/app/controllers/dateTimePickerController.js" />
-        <option value="$PROJECT_DIR$/app/controllers/timePickerController.js" />
         <option value="$PROJECT_DIR$/app/controllers/datePickerController.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/css/style.css" />
+        <option value="$PROJECT_DIR$/app/views/timePickerDirective.html" />
+        <option value="$PROJECT_DIR$/app/controllers/timePickerController.js" />
       </list>
     </option>
   </component>
@@ -383,12 +383,12 @@
       <workItem from="1480731214012" duration="11611000" />
       <workItem from="1480765845872" duration="20749000" />
       <workItem from="1480800955505" duration="1362000" />
-      <workItem from="1480803719096" duration="40236000" />
+      <workItem from="1480803719096" duration="41908000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75742000" />
+    <option name="totallyTimeSpent" value="77414000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -844,41 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/datePickerController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="63" selection-start-line="30" selection-start-column="63" selection-end-line="30" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/dateTimePickerDirective.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/timePickerDirective.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/timePickerController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="59" column="17" selection-start-line="47" selection-start-column="7" selection-end-line="59" selection-end-column="17" />
-          <folding>
-            <element signature="e#2163#2338#0" expanded="false" />
-            <element signature="e#2904#3667#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
@@ -895,6 +860,40 @@
         <state relative-caret-position="51">
           <caret line="3" column="27" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/dateTimePickerDirective.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/datePickerController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="30" column="63" selection-start-line="30" selection-start-column="63" selection-end-line="30" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/timePickerDirective.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="200" selection-start-line="1" selection-start-column="200" selection-end-line="1" selection-end-column="200" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/timePickerController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <folding>
+            <element signature="e#2764#3527#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
