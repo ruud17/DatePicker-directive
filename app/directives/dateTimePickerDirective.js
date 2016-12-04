@@ -10,7 +10,10 @@
                     ngModel:"=",
                     sbTimeZone:'@'
                 },
-                templateUrl: 'views/dateTimePickerDirective.html',
+                templateUrl: 'views/dateTimePickerDirective.html'
+               /* link:function (scope,attrs,el) {
+                    scope.ngModel=moment.tz(scope.ngModel, scope.sbTimeZone);
+                }*/
             };
         }
     );

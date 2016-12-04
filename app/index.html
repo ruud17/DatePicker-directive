@@ -15,10 +15,9 @@
 
     <script src="app.js"></script>
 
-<!--
-    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
--->
     <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls-2.3.0.js"></script>
+    <script src="node_modules/moment-timezone/node_modules/moment/min/moment.min.js"></script>
+    <script src="node_modules/moment-timezone/builds/moment-timezone-with-data.min.js"></script>
 
     <script src="controllers/mainController.js"></script>
     <script src="controllers/dateTimePickerController.js"></script>
@@ -34,7 +33,7 @@
 <body>
 <div data-ng-controller="mainController">
     <p style="margin-left: 15px">Selected date and time:
-        <span class="currentDateTime"> {{order.requestedDatetime | date:'yyyy-MM-dd HH:mm:ss Z'}} </span>
+        <span class="currentDateTime"> {{datetime}} </span>
     </p>
     <div class="checkbox">
         <label><input type="checkbox" value="" data-ng-model="shouldDisableDatepicker">Disable datepicker</label>
@@ -42,10 +41,16 @@
     <div class="checkbox">
         <label><input type="checkbox" value="" data-ng-model="shouldDisableTimepicker">Disable timepicker</label>
     </div>
-    <date-time-picker ng-model="order.requestedDatetime" sb-time-zone="order.timeZone" required="true">
-        <div date-picker="order.requestedDatetime" sb-before-render-item="beforeRenderDateItem(config)"></div>
-        <div time-picker="order.requestedDatetime" sb-before-render-item="beforeRenderDateItem(config)"></div>
-    </date-time-picker>
+    <div class="col-lg-3">
+        <label>Select timezone</label>
+        <select name="timeZoneSelect" data-ng-model="order.timeZone" class="form-control col-lg-2">
+            <option value="{{item}}" data-ng-repeat="item in timeZones">{{item}}</option>
+        </select>
+    </div>
+        <date-time-picker ng-model="order.requestedDatetime" sb-time-zone="{{order.timeZone}}" required="true">
+            <div date-picker="order.requestedDatetime" sb-before-render-item="beforeRenderDateItem(config)"></div>
+            <div time-picker="order.requestedDatetime" sb-before-render-item="beforeRenderDateItem(config)"></div>
+        </date-time-picker>
 </div>
 </body>
 </html>
