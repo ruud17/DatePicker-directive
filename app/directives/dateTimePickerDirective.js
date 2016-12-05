@@ -1,7 +1,7 @@
 (function (app) {
     'use strict';
 
-    app.directive('dateTimePicker',function () {
+    app.directive('dateTimePicker',function (listenerService) {
             return {
                 restrict: 'E',
                 transclude : true,
@@ -10,7 +10,16 @@
                     ngModel:"=",
                     sbTimeZone:'@'
                 },
-                templateUrl: 'views/dateTimePickerDirective.html'
+                templateUrl: 'views/dateTimePickerDirective.html',
+                link:function (scope,attrs,el) {
+                    if(scope.ngModel!=null){
+                        listenerService.setLastDate(scope.ngModel);
+                        listenerService.setLastTime(scope.ngModel);
+                    }else{
+                        listenerService.setLastDate(null);
+                        listenerService.setLastTime(null);
+                    }
+                }
             };
         }
     );

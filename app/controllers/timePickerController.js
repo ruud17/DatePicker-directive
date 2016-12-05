@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('timePickerController', ['$scope', 'workingHoursService', function ($scope, workingHoursService) {
+    .controller('timePickerController', ['$scope', 'workingHoursService','$rootScope','listenerService', function ($scope, workingHoursService,$rootScope,listenerService) {
         'use strict';
 
         var weekendDays = [0, 6];
@@ -12,7 +12,7 @@ angular.module('app')
             hstep: 1,
             mstep: 15,
             ismeridian: true,
-            indicator: true
+           // indicator: true,
         });
 
         function checkDateAndTime(dateTime) {
@@ -52,10 +52,17 @@ angular.module('app')
         }
 
         function init(){
-            $scope.selectedTime!=null ?   $scope.selectedTimeModel= new Date($scope.selectedTime) : $scope.selectedTimeModel= null;
+            if($scope.selectedTime!=null){
+                $scope.selectedTimeModel= new Date($scope.selectedTime)
+                $scope.dateSelected=true;
+            } else{
+                $scope.selectedTimeModel= null;
+                $scope.dateSelected=false;
+            }
         }
 
         $scope.$watch('selectedTimeModel', function (newVal) {
+            listenerService.setLastTime(newVal);
             if (newVal != null) {
                 $scope.selectedTime = new Date(lastSelectedDate);
                 $scope.selectedTime.setHours(newVal.getHours());
@@ -63,13 +70,13 @@ angular.module('app')
             } else {
                 $scope.selectedTime = null;
                 $scope.disableTimepicker = false;
-                $scope.indicator = false;
+              //  $scope.indicator = false;
             }
         }, true);
 
         $scope.$watch('selectedTime', function (newVal, oldVal) {
             if (checkDateAndTime(newVal)) {
-                $scope.indicator = true;
+             //   $scope.indicator = true;
                 lastSelectedDate = new Date(newVal);
                 var isDateChanged = checkIfDateIsChanged(newVal, oldVal);
                 if (isDateChanged) {
@@ -87,6 +94,14 @@ angular.module('app')
         $scope.$on('updateDirectiveStatus', function () {
             var outerFunctionValue = $scope.sbBeforeRenderItem();
             $scope.shouldDisableTimePicker = outerFunctionValue.disabled.timePicker;
+        });
+
+        $scope.$on('dateChanged', function (e,arrgs) {
+            if(typeof arrgs!='undefined' && arrgs!=null){
+                $scope.dateSelected=true;
+            }else{
+                $scope.dateSelected=false;
+            }
         });
     }
     ]);

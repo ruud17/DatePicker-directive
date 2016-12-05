@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('datePickerController', ['$scope', function ($scope) {
+    .controller('datePickerController', ['$scope', '$rootScope', 'listenerService', function ($scope, $rootScope, listenerService) {
         'use strict';
 
         var lastSelectedDate = new Date($scope.selectedDate);
@@ -13,14 +13,15 @@ angular.module('app')
                 opened: false
             }
         });
+
         $scope.format = $scope.formats[0];
 
-            $scope.openDatepicker = function () {
+        $scope.openDatepicker = function () {
             $scope.datepicker.opened = true;
         };
 
-        function init(){
-            $scope.selectedDate!=null ?   $scope.selectedDateModel= new Date($scope.selectedDate) : $scope.selectedDateModel= null;
+        function init() {
+            $scope.selectedDate != null ? $scope.selectedDateModel = new Date($scope.selectedDate) : $scope.selectedDateModel = null;
         }
 
         $scope.$watch('selectedDateModel', function (newVal) {
@@ -32,9 +33,12 @@ angular.module('app')
             } else {
                 $scope.selectedDate = null;
             }
+
+            listenerService.setLastDate(newVal);
+            $rootScope.$broadcast('dateChanged', $scope.selectedDateModel);
         });
 
-        $scope.$watch('selectedDate', function (newVal,oldVal) {
+        $scope.$watch('selectedDate', function (newVal) {
             if (newVal != null) {
                 lastSelectedDate = new Date(newVal);
             }
