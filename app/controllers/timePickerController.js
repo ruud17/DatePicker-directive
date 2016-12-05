@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('timePickerController', ['$scope', 'workingHoursService','$rootScope','listenerService', function ($scope, workingHoursService,$rootScope,listenerService) {
+    .controller('timePickerController', ['$scope', 'workingHoursService', '$rootScope', 'listenerService', function ($scope, workingHoursService, $rootScope, listenerService) {
         'use strict';
 
         var weekendDays = [0, 6];
@@ -11,8 +11,7 @@ angular.module('app')
         angular.extend($scope, {
             hstep: 1,
             mstep: 15,
-            ismeridian: true,
-           // indicator: true,
+            ismeridian: true
         });
 
         function checkDateAndTime(dateTime) {
@@ -25,7 +24,7 @@ angular.module('app')
 
         function checkIfDateIsChanged(newDate, oldDate) {
             if (newDate != null && oldDate != null) {
-                if (newDate.getFullYear() != oldDate.getFullYear() || newDate.getMonth() != oldDate.getMonth() || newDate.getDate() != oldDate.getDate()) {
+                if (newDate.getFullYear() !== oldDate.getFullYear() || newDate.getMonth() !== oldDate.getMonth() || newDate.getDate() !== oldDate.getDate()) {
                     return true;
                 } else {
                     return false;
@@ -38,7 +37,7 @@ angular.module('app')
         function unsetTimePickerValue(date) {
             if (typeof date != 'undefined' && date != null) {
                 var day = date.getDay();
-                if (day == weekendDays[0] || day == weekendDays[1]) {
+                if (day === weekendDays[0] || day === weekendDays[1]) {
                     if (date.getHours() < workingHours.weekends.startHours || (date.getHours() >= workingHours.weekends.endHours && date.getMinutes() > workingHours.weekends.endMinutes)) {
                         return true;
                     }
@@ -51,13 +50,13 @@ angular.module('app')
             return false;
         }
 
-        function init(){
-            if($scope.selectedTime!=null){
-                $scope.selectedTimeModel= new Date($scope.selectedTime)
-                $scope.dateSelected=true;
-            } else{
-                $scope.selectedTimeModel= null;
-                $scope.dateSelected=false;
+        function init() {
+            if ($scope.selectedTime != null) {
+                $scope.selectedTimeModel = new Date($scope.selectedTime);
+                $scope.dateSelected = true;
+            } else {
+                $scope.selectedTimeModel = null;
+                $scope.dateSelected = false;
             }
         }
 
@@ -70,13 +69,11 @@ angular.module('app')
             } else {
                 $scope.selectedTime = null;
                 $scope.disableTimepicker = false;
-              //  $scope.indicator = false;
             }
         }, true);
 
         $scope.$watch('selectedTime', function (newVal, oldVal) {
             if (checkDateAndTime(newVal)) {
-             //   $scope.indicator = true;
                 lastSelectedDate = new Date(newVal);
                 var isDateChanged = checkIfDateIsChanged(newVal, oldVal);
                 if (isDateChanged) {
@@ -96,11 +93,11 @@ angular.module('app')
             $scope.shouldDisableTimePicker = outerFunctionValue.disabled.timePicker;
         });
 
-        $scope.$on('dateChanged', function (e,arrgs) {
-            if(typeof arrgs!='undefined' && arrgs!=null){
-                $scope.dateSelected=true;
-            }else{
-                $scope.dateSelected=false;
+        $scope.$on('dateChanged', function (e, arrgs) {
+            if (typeof arrgs != 'undefined' && arrgs != null) {
+                $scope.dateSelected = true;
+            } else {
+                $scope.dateSelected = false;
             }
         });
     }
