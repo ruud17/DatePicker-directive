@@ -5,7 +5,7 @@ angular.module('app')
             shouldDisableDatepicker: false,
             shouldDisableTimepicker: false,
             order: {
-                requestedDatetime: new Date(),
+                requestedDatetime: null,
                 timeZone: 'America/New_York'
             },
             config: {
@@ -17,7 +17,8 @@ angular.module('app')
             },
             timeZones: ['America/Los_Angeles', 'Africa/Bamako', 'America/Chicago', 'America/New_York']
         });
-        $scope.datetime=new Date($scope.order.requestedDatetime);
+
+        $scope.datetime = new Date($scope.order.requestedDatetime);
 
         $scope.beforeRenderDateItem = function (data) {
             data = {

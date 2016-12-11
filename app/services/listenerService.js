@@ -2,25 +2,25 @@ angular.module('app')
     .factory('listenerService', function () {
             'use strict';
 
-            var datetime={
-                lastDate:null,
-                lastTime:null
+            var datetime = {
+                lastDate: null,
+                lastTime: null
             }
 
             function setLastDate(val) {
-                datetime.lastDate=val;
+                datetime.lastDate = val;
                 return datetime.lastDate;
             }
 
-            function getLastDate(lastDate) {
+            function getLastDate() {
                 return datetime.lastDate;
             }
 
             function setLastTime(val) {
-                datetime.lastTime=val;
+                datetime.lastTime = val;
             }
 
-            function getLastTime(lastDate) {
+            function getLastTime() {
                 return datetime.lastTime;
             }
 
@@ -30,10 +30,10 @@ angular.module('app')
 
             return {
                 setLastDate: setLastDate,
-                getLastDate:getLastDate,
-                setLastTime:setLastTime,
-                getLastTime:getLastTime,
-                getDateTime:getDateTime
+                getLastDate: getLastDate,
+                setLastTime: setLastTime,
+                getLastTime: getLastTime,
+                getDateTime: getDateTime
             }
         }
     );
