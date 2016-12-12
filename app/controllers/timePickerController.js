@@ -1,18 +1,21 @@
 angular.module('app')
-    .controller('timePickerController', ['$scope', 'workingHoursService', '$rootScope', 'listenerService', function ($scope, workingHoursService, $rootScope, listenerService) {
+    .controller('timePickerController', ['$scope', 'workingHoursService', '$rootScope', 'listenerService','timePickerService', function ($scope, workingHoursService, $rootScope, listenerService,timePickerService) {
         'use strict';
 
         var weekendDays = [0, 6];
         var workingHours = workingHoursService.getWorkingHours();
         var lastSelectedDate = new Date($scope.selectedTime);
 
-        init();
-
         angular.extend($scope, {
             hstep: 1,
             mstep: 15,
-            ismeridian: true
+            ismeridian: true,
+            timePeriods: timePickerService.getTimePeriods(),
+            timeValues:timePickerService.getTimeValues(),
+            selectedPeriod:{}
         });
+
+        init();
 
         function checkDateAndTime(dateTime) {
             if (typeof dateTime != 'undefined' && dateTime != null) {
@@ -51,6 +54,8 @@ angular.module('app')
         }
 
         function init() {
+            $scope.selectedPeriod=$scope.timePeriods[0];
+
             if ($scope.selectedTime != null) {
                 $scope.selectedTimeModel = new Date($scope.selectedTime);
                 $scope.dateSelected = true;
@@ -60,12 +65,31 @@ angular.module('app')
             }
         }
 
+        function checkPeriodStatus(period,val){
+            var time={
+                hours:parseInt(val.split(":")[0]),
+                minutes:parseInt(val.split(":")[1])
+            };
+
+            if(time.hours==12) {
+                period.value=="PM"  ? time.hours=12 : time.hours=0;
+            }else {
+                if(period.value=="PM") {
+                    time.hours = parseInt(val.split(":")[0]) + 12;
+                }
+            }
+            return time;
+        }
+
         $scope.$watch('selectedTimeModel', function (newVal) {
+            console.log('new val',newVal);
+
             listenerService.setLastTime(newVal);
             if (newVal != null) {
                 $scope.selectedTime = new Date(lastSelectedDate);
-                $scope.selectedTime.setHours(newVal.getHours());
-                $scope.selectedTime.setMinutes(newVal.getMinutes());
+                var getHoursAndMinutes=checkPeriodStatus($scope.selectedPeriod,newVal)
+                $scope.selectedTime.setHours(getHoursAndMinutes.hours);
+                $scope.selectedTime.setMinutes(getHoursAndMinutes.minutes);
             } else {
                 $scope.selectedTime = null;
                 $scope.disableTimepicker = false;

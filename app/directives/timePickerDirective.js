@@ -9,7 +9,17 @@
                     sbBeforeRenderItem:'&'
                 },
                 templateUrl: 'views/timePickerDirective.html',
-                controller:'timePickerController'
+                controller:'timePickerController',
+                link:function (scope,attrs,el) {
+                    scope.changePeriod=function (ev,selectedPeriod) {
+                        ev.stopPropagation();
+                        scope.selectedPeriod=selectedPeriod;
+                    }
+
+                    scope.selectTime=function (lastSelectedTime) {
+                        scope.selectedTimeModel=lastSelectedTime;
+                    }
+                }
             };
         }
     );

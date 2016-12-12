@@ -1,3 +1,27 @@
-<div class="col-lg-2 timePickerPos">
-    <div uib-timepicker ng-model="selectedTimeModel" min="min" max="max" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" ng-disabled="(disableTimepicker && !dateSelected) || shouldDisableTimePicker"></div>
+<div class="col-lg-6 timePickerPos">
+    <!--
+       <div uib-timepicker ng-model="selectedTimeModel" min="min" max="max" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" ng-disabled="(disableTimepicker && !dateSelected) || shouldDisableTimePicker"></div>
+    -->
+    <div class="btn-group col-lg-6" uib-dropdown dropdown-append-to-body auto-close="false">
+        <input type="text" uib-dropdown-toggle placeholder="Select time" readonly data-ng-model="selectedTimeModel" data-ng-disabled="(disableTimepicker && !dateSelected) || shouldDisableTimePicker">
+        <div class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body"
+             style="width: 30%">
+            <div style="text-align: center;font-size: 23px;">
+                October 27,2016
+                <hr>
+            </div>
+            <div>
+                <ul class="nav nav-tabs">
+                    <li data-ng-repeat="per in timePeriods" data-ng-click="changePeriod($event,per)"
+                        data-ng-class="{active: $index+1==selectedPeriod.id}"><a href="">{{per.value}}</a></li>
+                </ul>
+            </div>
+            <div>
+                <span class="col-lg-3" data-ng-repeat="time in timeValues" style="padding: 10px" data-ng-click="selectTime(time)"> {{time}} {{selectedPeriod.value}} </span>
+            </div>
+        </div>
+
+
+    </div>
+
 </div>
