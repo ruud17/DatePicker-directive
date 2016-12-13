@@ -13,11 +13,19 @@
                 link: function (scope, attrs, el) {
                     scope.changePeriod = function (ev, selectedPeriod) {
                         ev.stopPropagation();
+                        ev.preventDefault();
                         scope.selectedPeriod = selectedPeriod;
                     }
 
                     scope.selectTime = function (lastSelectedTime) {
                         scope.selectedTimeModel = lastSelectedTime + " " + scope.selectedPeriod.value;
+                        scope.shouldOpenTimePickerDropdown=false;
+                    }
+
+                    scope.disableClosing=function (ev) {
+                        ev.stopPropagation();
+                        ev.preventDefault();
+
                     }
                 }
             };

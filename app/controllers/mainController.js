@@ -5,7 +5,7 @@ angular.module('app')
             shouldDisableDatepicker: false,
             shouldDisableTimepicker: false,
             order: {
-                requestedDatetime: null,
+                requestedDatetime: new Date(1994,7,1,10,45),
                 timeZone: 'America/New_York'
             },
             config: {

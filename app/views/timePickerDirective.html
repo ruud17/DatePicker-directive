@@ -1,12 +1,11 @@
 <div class="col-lg-6 timePickerPos">
-    <div class="btn-group col-lg-6" uib-dropdown dropdown-append-to-body auto-close="false">
+    <div class="btn-group col-lg-6" uib-dropdown dropdown-append-to-body auto-close="false" is-open="shouldOpenTimePickerDropdown">
         <input type="text" uib-dropdown-toggle placeholder="Select time" readonly data-ng-model="selectedTimeModel"
                data-ng-disabled="(disableTimepicker && !dateSelected) || shouldDisableTimePicker">
-        <div class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body"
+        <div class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body" data-ng-click="disableClosing($event)"
              style="width: 30%">
             <div style="text-align: center;font-size: 23px;">
                 {{datePickerValue | date:'longDate'}}
-                rez{{datePickerValue.getDay()}}
                 <hr>
             </div>
             <div>

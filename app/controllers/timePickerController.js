@@ -13,7 +13,8 @@ angular.module('app')
             timePeriods: timePickerService.getTimePeriods(),
             timeValues: timePickerService.getTimeValues(),
             selectedPeriod: {},
-            datePickerValue: null
+            datePickerValue: null,
+            shouldOpenTimePickerDropdown:false
         });
 
         init();
