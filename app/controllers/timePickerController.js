@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('timePickerController', ['$scope', 'workingHoursService', '$rootScope', 'listenerService','timePickerService', function ($scope, workingHoursService, $rootScope, listenerService,timePickerService) {
+    .controller('timePickerController', ['$scope', 'workingHoursService', '$rootScope', 'listenerService', 'timePickerService', function ($scope, workingHoursService, $rootScope, listenerService, timePickerService) {
         'use strict';
 
         var weekendDays = [0, 6];
@@ -11,8 +11,8 @@ angular.module('app')
             mstep: 15,
             ismeridian: true,
             timePeriods: timePickerService.getTimePeriods(),
-            timeValues:timePickerService.getTimeValues(),
-            selectedPeriod:{}
+            timeValues: timePickerService.getTimeValues(),
+            selectedPeriod: {}
         });
 
         init();
@@ -54,47 +54,56 @@ angular.module('app')
         }
 
         function init() {
-            $scope.selectedPeriod=$scope.timePeriods[0];
-            var hours,minutes;
 
             if ($scope.selectedTime != null) {
-                if($scope.selectedTime.getHours()==0){
-                   $scope.selectedTimeModel = 12 +":"+$scope.selectedTime.getMinutes()+ " " + $scope.timePeriods[0].value;
-                }
-                else if($scope.selectedTime.getHours()==12){
-                    $scope.selectedTimeModel = 12 +":"+$scope.selectedTime.getMinutes()+ " " +$scope.timePeriods[1].value;
-                }
-                else if($scope.selectedTime.getHours()>12){
-                    $scope.selectedTimeModel = $scope.selectedTime.getHours()-12 +":"+$scope.selectedTime.getMinutes()+ " " + $scope.timePeriods[1].value;
-                }else{
-                    $scope.selectedTimeModel = $scope.selectedTime.getHours() +":"+$scope.selectedTime.getMinutes()+ " " +$scope.timePeriods[0].value;
-                }
-
-                if(parseInt($scope.selectedTimeModel.split(":")[0])<10){
-                    hours="0"+$scope.selectedTime.getHours();
-                }
-
-                if(parseInt($scope.selectedTimeModel.split(":")[1])<10){
-                    minutes=":0"+$scope.selectedTime.getMinutes();
-                }
-
+                $scope.selectedTimeModel = getTime($scope.selectedTime, $scope.timePeriods);
+                $scope.selectedTime.getHours()>=12 ? $scope.selectedPeriod = $scope.timePeriods[1] : C;
                 $scope.dateSelected = true;
             } else {
+                $scope.selectedPeriod = $scope.timePeriods[0];
                 $scope.selectedTimeModel = null;
                 $scope.dateSelected = false;
             }
         }
 
-        function checkPeriodStatus(period,val){
-            var time={
-                hours:parseInt(val.split(":")[0]),
-                minutes:parseInt(val.split(":")[1])
+        function getTime(time, period) {
+            var currentTime = time.getHours();
+            var result, hours, minutes;
+
+            switch (true) {
+                case (currentTime == 0):
+                    result = 12 + ":" + time.getMinutes() + " " + period[0].value;
+                    break;
+                case (currentTime == 12):
+                    result = 12 + ":" + time.getMinutes() + " " + period[1].value;
+                    break;
+                case (currentTime > 12):
+                    result = "0" + (time.getHours() - 12) + ":" + time.getMinutes() + " " + period[1].value;
+                    break;
+                case (currentTime == 10 || currentTime == 11):
+                    result = time.getHours() + ":" + time.getMinutes() + " " + period[0].value;
+                    break;
+                default:
+                    result = "0" + time.getHours() + ":" + time.getMinutes() + " " + period[0].value;
+                    break;
+            }
+
+            if(parseInt(result.split(":")[1]) < 10){
+                result = result.substr(0, 3) + "0" + result.substr(3);
+            }
+            return result;
+        }
+
+        function checkPeriodStatus(period, val) {
+            var time = {
+                hours: parseInt(val.split(":")[0]),
+                minutes: parseInt(val.split(":")[1])
             };
 
-            if(time.hours==12) {
-                period.value=="PM"  ? time.hours=12 : time.hours=0;
-            }else {
-                if(period.value=="PM") {
+            if (time.hours == 12) {
+                period.value == "PM" ? time.hours = 12 : time.hours = 0;
+            } else {
+                if (period.value == "PM") {
                     time.hours = parseInt(val.split(":")[0]) + 12;
                 }
             }
@@ -102,11 +111,10 @@ angular.module('app')
         }
 
         $scope.$watch('selectedTimeModel', function (newVal) {
-console.log('new val',newVal);
             listenerService.setLastTime(newVal);
             if (newVal != null) {
                 $scope.selectedTime = new Date(lastSelectedDate);
-                var getHoursAndMinutes=checkPeriodStatus($scope.selectedPeriod,newVal)
+                var getHoursAndMinutes = checkPeriodStatus($scope.selectedPeriod, newVal);
                 $scope.selectedTime.setHours(getHoursAndMinutes.hours);
                 $scope.selectedTime.setMinutes(getHoursAndMinutes.minutes);
             } else {
