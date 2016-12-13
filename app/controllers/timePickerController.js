@@ -12,7 +12,8 @@ angular.module('app')
             ismeridian: true,
             timePeriods: timePickerService.getTimePeriods(),
             timeValues: timePickerService.getTimeValues(),
-            selectedPeriod: {}
+            selectedPeriod: {},
+            datePickerValue: null
         });
 
         init();
@@ -41,11 +42,11 @@ angular.module('app')
             if (typeof date != 'undefined' && date != null) {
                 var day = date.getDay();
                 if (day === weekendDays[0] || day === weekendDays[1]) {
-                    if (date.getHours() < workingHours.weekends.startHours || (date.getHours() >= workingHours.weekends.endHours && date.getMinutes() > workingHours.weekends.endMinutes)) {
+                    if (date.getHours() < workingHours.weekends.startHours || date.getHours() >= workingHours.weekends.endHours) {
                         return true;
                     }
                 } else {
-                    if (date.getHours() < workingHours.weekdays.startHours || (date.getHours() >= workingHours.weekdays.endHours && date.getMinutes() > workingHours.weekdays.endMinutes)) {
+                    if (date.getHours() < workingHours.weekdays.startHours || date.getHours() >= workingHours.weekdays.endHours) {
                         return true;
                     }
                 }
@@ -54,15 +55,16 @@ angular.module('app')
         }
 
         function init() {
-
             if ($scope.selectedTime != null) {
                 $scope.selectedTimeModel = getTime($scope.selectedTime, $scope.timePeriods);
-                $scope.selectedTime.getHours()>=12 ? $scope.selectedPeriod = $scope.timePeriods[1] : C;
+                $scope.selectedTime.getHours() >= 12 ? $scope.selectedPeriod = $scope.timePeriods[1] : $scope.selectedPeriod = $scope.timePeriods[0];
                 $scope.dateSelected = true;
+                $scope.datePickerValue = $scope.selectedTime;
             } else {
                 $scope.selectedPeriod = $scope.timePeriods[0];
                 $scope.selectedTimeModel = null;
                 $scope.dateSelected = false;
+                $scope.datePickerValue = null;
             }
         }
 
@@ -88,7 +90,7 @@ angular.module('app')
                     break;
             }
 
-            if(parseInt(result.split(":")[1]) < 10){
+            if (parseInt(result.split(":")[1]) < 10) {
                 result = result.substr(0, 3) + "0" + result.substr(3);
             }
             return result;
@@ -108,6 +110,40 @@ angular.module('app')
                 }
             }
             return time;
+        }
+
+        $scope.createTime = function (time, period) {
+            return time + " " + period.value;
+        }
+
+        $scope.disableTime = function (date, time, period) {
+            if (typeof date != 'undefined' && date != null) {
+                var day = date.getDay();
+                var hours = parseInt(time.split(":")[0]);
+                var minutes = parseInt(time.split(":")[1]);
+
+                if (period.value == "PM" && hours != 12) {
+                    hours += 12;
+                }
+
+                if (period.value == "AM" && hours == 12) {
+                    hours = 0;
+                }
+                var timeValue = new Date(date.getFullYear(), date.getMonth(), date.getDate(), hours, minutes)
+
+                if (day === weekendDays[0] || day === weekendDays[1]) {
+
+                    if (timeValue.getHours() < workingHours.weekends.startHours || timeValue.getHours() >= workingHours.weekends.endHours) {
+                        return true;
+                    }
+                } else {
+
+                    if (timeValue.getHours() < workingHours.weekdays.startHours || timeValue.getHours() >= workingHours.weekdays.endHours) {
+                        return true;
+                    }
+                }
+                return false;
+            }
         }
 
         $scope.$watch('selectedTimeModel', function (newVal) {
@@ -147,8 +183,10 @@ angular.module('app')
         $scope.$on('dateChanged', function (e, arrgs) {
             if (typeof arrgs != 'undefined' && arrgs != null) {
                 $scope.dateSelected = true;
+                $scope.datePickerValue = arrgs;
             } else {
                 $scope.dateSelected = false;
+                $scope.datePickerValue = null;
             }
         });
     }

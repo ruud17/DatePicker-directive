@@ -24,3 +24,18 @@ body{
 .disableButton{
  margin-top: 0;
 }
+
+.disableSpan {
+    opacity: .2;
+    pointer-events: none;
+}
+
+.time span{
+    text-align: center;
+    padding: 10px 0;
+}
+
+.time span.selected {
+    background:#eeeeee;
+    border-radius: 4px;
+}
