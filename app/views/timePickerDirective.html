@@ -1,15 +1,18 @@
 <div class="col-lg-6 timePickerPos">
-    <div class="btn-group col-lg-6" uib-dropdown dropdown-append-to-body auto-close="false" is-open="shouldOpenTimePickerDropdown">
+    <div class="btn-group col-lg-6" uib-dropdown dropdown-append-to-body auto-close="false"
+         is-open="shouldOpenTimePickerDropdown">
         <input type="text" uib-dropdown-toggle placeholder="Select time" readonly data-ng-model="selectedTimeModel"
+               class="timeInput"
                data-ng-disabled="(disableTimepicker && !dateSelected) || shouldDisableTimePicker">
-        <div class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body" data-ng-click="disableClosing($event)"
-             style="width: 30%">
-            <div style="text-align: center;font-size: 23px;">
+        <div class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body"
+             data-ng-click="disableClosing($event)"
+             style="width: 25%">
+            <div style="text-align: center;font-size: 21px;">
                 {{datePickerValue | date:'longDate'}}
                 <hr>
             </div>
             <div>
-                <ul class="nav nav-tabs" style="text-align: center">
+                <ul class="nav nav-tabs" style="text-align: center;margin-top: -13px;">
                     <li data-ng-repeat="per in timePeriods" data-ng-click="changePeriod($event,per)"
                         style="float: none; display: inline-block;"
                         data-ng-class="{active: $index+1==selectedPeriod.id}"><a href="">{{per.value}}</a></li>

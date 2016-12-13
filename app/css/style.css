@@ -32,10 +32,21 @@ body{
 
 .time span{
     text-align: center;
-    padding: 10px 0;
+    padding: 6px 0;
+    cursor: pointer;
 }
 
 .time span.selected {
     background:#eeeeee;
     border-radius: 4px;
+}
+
+.timeInput{
+    margin-top: 31px;
+    width: 100%;
+    padding: 6px 12px;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-left: -6px;
 }
