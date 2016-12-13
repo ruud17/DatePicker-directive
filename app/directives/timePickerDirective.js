@@ -17,7 +17,7 @@
                     }
 
                     scope.selectTime=function (lastSelectedTime) {
-                        scope.selectedTimeModel=lastSelectedTime;
+                        scope.selectedTimeModel=lastSelectedTime + " " + scope.selectedPeriod.value;
                     }
                 }
             };

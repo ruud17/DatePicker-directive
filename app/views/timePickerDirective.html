@@ -1,7 +1,4 @@
 <div class="col-lg-6 timePickerPos">
-    <!--
-       <div uib-timepicker ng-model="selectedTimeModel" min="min" max="max" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" ng-disabled="(disableTimepicker && !dateSelected) || shouldDisableTimePicker"></div>
-    -->
     <div class="btn-group col-lg-6" uib-dropdown dropdown-append-to-body auto-close="false">
         <input type="text" uib-dropdown-toggle placeholder="Select time" readonly data-ng-model="selectedTimeModel" data-ng-disabled="(disableTimepicker && !dateSelected) || shouldDisableTimePicker">
         <div class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body"
@@ -20,8 +17,6 @@
                 <span class="col-lg-3" data-ng-repeat="time in timeValues" style="padding: 10px" data-ng-click="selectTime(time)"> {{time}} {{selectedPeriod.value}} </span>
             </div>
         </div>
-
-
     </div>
 
 </div>

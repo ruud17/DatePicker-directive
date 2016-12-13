@@ -55,9 +55,29 @@ angular.module('app')
 
         function init() {
             $scope.selectedPeriod=$scope.timePeriods[0];
+            var hours,minutes;
 
             if ($scope.selectedTime != null) {
-                $scope.selectedTimeModel = new Date($scope.selectedTime);
+                if($scope.selectedTime.getHours()==0){
+                   $scope.selectedTimeModel = 12 +":"+$scope.selectedTime.getMinutes()+ " " + $scope.timePeriods[0].value;
+                }
+                else if($scope.selectedTime.getHours()==12){
+                    $scope.selectedTimeModel = 12 +":"+$scope.selectedTime.getMinutes()+ " " +$scope.timePeriods[1].value;
+                }
+                else if($scope.selectedTime.getHours()>12){
+                    $scope.selectedTimeModel = $scope.selectedTime.getHours()-12 +":"+$scope.selectedTime.getMinutes()+ " " + $scope.timePeriods[1].value;
+                }else{
+                    $scope.selectedTimeModel = $scope.selectedTime.getHours() +":"+$scope.selectedTime.getMinutes()+ " " +$scope.timePeriods[0].value;
+                }
+
+                if(parseInt($scope.selectedTimeModel.split(":")[0])<10){
+                    hours="0"+$scope.selectedTime.getHours();
+                }
+
+                if(parseInt($scope.selectedTimeModel.split(":")[1])<10){
+                    minutes=":0"+$scope.selectedTime.getMinutes();
+                }
+
                 $scope.dateSelected = true;
             } else {
                 $scope.selectedTimeModel = null;
@@ -82,8 +102,7 @@ angular.module('app')
         }
 
         $scope.$watch('selectedTimeModel', function (newVal) {
-            console.log('new val',newVal);
-
+console.log('new val',newVal);
             listenerService.setLastTime(newVal);
             if (newVal != null) {
                 $scope.selectedTime = new Date(lastSelectedDate);
