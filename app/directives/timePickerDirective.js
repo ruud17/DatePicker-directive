@@ -6,7 +6,7 @@
                 restrict: 'AE',
                 scope: {
                     selectedTime: '=timePicker',
-                    sbBeforeRenderItem: '&'
+                    sbBeforeRenderItem: '&?'
                 },
                 templateUrl: 'views/timePickerDirective.html',
                 controller: 'timePickerController',

@@ -43,11 +43,11 @@ angular.module('app')
             if (typeof date != 'undefined' && date != null) {
                 var day = date.getDay();
                 if (day === weekendDays[0] || day === weekendDays[1]) {
-                    if (date.getHours() < workingHours.weekends.startHours || date.getHours() >= workingHours.weekends.endHours) {
+                    if (date.getHours() < workingHours.weekends.startHours || date.getHours() > workingHours.weekends.endHours || (date.getHours() >= workingHours.weekends.endHours && date.getMinutes() > workingHours.weekends.endMinutes)) {
                         return true;
                     }
                 } else {
-                    if (date.getHours() < workingHours.weekdays.startHours || date.getHours() >= workingHours.weekdays.endHours) {
+                    if (date.getHours() < workingHours.weekdays.startHours || date.getHours() > workingHours.weekdays.endHours || (date.getHours() >= workingHours.weekdays.endHours && date.getMinutes() > workingHours.weekdays.endMinutes)) {
                         return true;
                     }
                 }
@@ -134,12 +134,12 @@ angular.module('app')
 
                 if (day === weekendDays[0] || day === weekendDays[1]) {
 
-                    if (timeValue.getHours() < workingHours.weekends.startHours || timeValue.getHours() >= workingHours.weekends.endHours) {
+                    if (timeValue.getHours() < workingHours.weekends.startHours || timeValue.getHours() > workingHours.weekends.endHours || (timeValue.getHours() >= workingHours.weekends.endHours && timeValue.getMinutes() > workingHours.weekends.endMinutes)) {
                         return true;
                     }
                 } else {
 
-                    if (timeValue.getHours() < workingHours.weekdays.startHours || timeValue.getHours() >= workingHours.weekdays.endHours) {
+                    if (timeValue.getHours() < workingHours.weekdays.startHours || timeValue.getHours() > workingHours.weekdays.endHours || (timeValue.getHours() >= workingHours.weekdays.endHours && timeValue.getMinutes() > workingHours.weekdays.endMinutes)) {
                         return true;
                     }
                 }

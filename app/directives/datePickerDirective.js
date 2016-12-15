@@ -6,7 +6,7 @@
                 restrict: 'AE',
                 scope: {
                     selectedDate:"=datePicker",
-                    sbBeforeRenderItem:'&'
+                    sbBeforeRenderItem:'&?'
                 },
                 templateUrl: 'views/datePickerDirective.html',
                 controller: 'datePickerController'
